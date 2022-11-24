@@ -6,7 +6,7 @@ let minNum = 1;
 let maxNum = 100;
 const info = [];
 
-const PlaySection = ({number}) => {
+const PlaySection = ({number, goHome}) => {
   const [isWin, setIsWin] = useState(false);
   const initialGuess = generateRandomNumber(minNum, maxNum);
   const [random, setRandom] = useState(initialGuess);
@@ -14,7 +14,7 @@ const PlaySection = ({number}) => {
   function generateRandomNumber(min, max, exclude) {
     const rndNum = Math.floor(Math.random() * (max - min)) + min;
     if (rndNum === exclude) {
-      setIsWin(true);
+      setIsWin(true);      
       return generateRandomNumber(min, max, exclude);
     } else {
       return rndNum;
@@ -46,6 +46,7 @@ const PlaySection = ({number}) => {
         <View style={styles.winTemplete}>
           <Text style={styles.winTxt}> Your Value is {number}</Text>
           <Text style={styles.winTxt}>You Win in {info.length} rounds</Text>
+          <Button title='Play Again' onPress={()=> goHome(0)}/>
         </View>
       ) : (
         <View style={styles.viewSection}>

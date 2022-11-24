@@ -19,7 +19,7 @@ const App = () => {
 
   return (
     <>
-      {num ? <PlaySection number={num} /> : <Home onSelect={onNumSelect} />}
+      {num ? <PlaySection number={num} goHome={onNumSelect} /> : <Home onSelect={onNumSelect} />}
     </>
   );
 };
